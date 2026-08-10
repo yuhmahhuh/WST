@@ -1,43 +1,162 @@
 <html>  
     <head>
         <style>
-        .topnav {
-        background-color: #333;
-        overflow: hidden;
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box; /* 0.6.7 */
+        font-family: sans-serif;
         }
 
-        .topnav a {
-        float: left;
-        display: block;
-        color: #f2f2f2;
-        text-align: center;
-        padding: 14px 16px;
+        body {
+        background-color: #f4f4f9;
+        }
+
+        .topbar {
+        display: flex; /* 0.6.7 */
+        justify-content: space-between; /* 0.6.7 */
+        align-items: center; /* 0.6.7 */
+        background-color: #333; /* 0.6.5 */
+        padding: 10px 20px;
+        color: #fff;
+        position: sticky; /* 0.6.11 */
+        top: 0;
+        z-index: 1000;
+        }
+
+        .logo {
+        font-size: 24px;
+        font-weight: bold;
         text-decoration: none;
-        font-size: 17px;
+        color: #fff;
+        }
+        .piclogo {
+        height: 40px; /* Adjust as needed */
+        weight: auto; /* Maintain aspect ratio */
         }
 
-        .topnav a:hover {
-        background-color: #ddd;
-        color: black;
+        .nav-links {
+        display: flex; /* 0.6.7 */
+        list-style: none; /* 0.6.14 */
         }
 
-        .topnav a.active {
-        background-color: #04AA6D;
-        color: white;
+        .nav-links li a {
+        display: block; /* 0.6.4 */
+        padding: 10px 15px; /* 0.6.4 */
+        color: #fff; /* 0.6.4 */
+        text-decoration: none; /* 0.6.4 */
+        font-size: 16px;
+        transition: background 0.3s;
         }
 
-        .topnav .icon {
+        .nav-links li a:hover {
+        background-color: #555;
+        border-radius: 4px;
+        }
+
+        .menu-toggle {
         display: none;
+        cursor: pointer;
+        flex-direction: column;
+        gap: 5px;
+        }
+
+        .menu-toggle span {
+        background-color: #fff;
+        height: 3px;
+        width: 25px;
+        border-radius: 2px;
+        }
+
+            #checkbox-toggle {
+        display: none;
+        }
+
+        .abt {
+        padding: 30px;
+        }
+
+        .register {
+        text-align: center;
+        padding: 20px;
+        }
+
+        footer {
+        text-align: center;
+        }
+
+        @media (max-width: 768px) {
+        .menu-toggle {
+            display: flex;
+        }
+
+        .nav-links {
+            display: none; 
+            flex-direction: column;
+            width: 100%;
+            position: absolute;
+            top: 100%; 
+            left: 0;
+            background-color: #333;
+            padding: 10px 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .nav-links li {
+            text-align: center;
+        }
+
+                .nav-links li a {
+            padding: 15px;
+        }
+
+        #checkbox-toggle:checked ~ .nav-links {
+            display: flex;
+        }
         }
 
         </style>
         
     </head>
-    <body>
-        <h1>Menu</h1>
+        <body>
+
+        <nav class="topbar">
+        <!-- Brand Logo -->
+        <img src="logo.png" alt="Brand Logo" class="piclogo">
+        <a href="#" class="logo">GalleryCove</a>
+
+        <!-- Hidden checkbox to control mobile visibility -->
+        <input type="checkbox" id="checkbox-toggle">
         
-        <p>About page</p>
+        <!-- Hamburger icon tied to the checkbox -->
+        <label for="checkbox-toggle" class="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+        </label>
+
+        <!-- Navigation Menu Items -->
+        <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+        
+    <section class="abt">
+        <p>Explore artworks from featured creators. Discover new styles, techniques, and stories.</p> </br>
+    </section>
+
+    <section class="register">
         <a href="login.html">Login</a>
         <a href="signup.html">Sign Up</a></br>
+    </section>
+
+    <br>
+
+        <footer>
+        <p>&copy; 2026 GalleryCove. All rights reserved.</p>
+        </footer>
     </body>
 </html>

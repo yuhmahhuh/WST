@@ -4,22 +4,23 @@
         * {
         margin: 0;
         padding: 0;
-        box-sizing: border-box; /* 0.6.7 */
+        box-sizing: border-box;
         font-family: sans-serif;
         }
 
         body {
-        background-color: #f4f4f9;
+        background-color: #fef2f5;
+        text-align: center  ;
         }
 
         .topbar {
-        display: flex; /* 0.6.7 */
-        justify-content: space-between; /* 0.6.7 */
-        align-items: center; /* 0.6.7 */
-        background-color: #333; /* 0.6.5 */
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center; 
+        background-color: #da9494; 
         padding: 10px 20px;
         color: #fff;
-        position: sticky; /* 0.6.11 */
+        position: sticky; 
         top: 0;
         z-index: 1000;
         }
@@ -31,20 +32,20 @@
         color: #fff;
         }
         .piclogo {
-        height: 40px; /* Adjust as needed */
-        weight: auto; /* Maintain aspect ratio */
+        height: 40px; 
+        weight: auto;
         }
 
         .nav-links {
-        display: flex; /* 0.6.7 */
-        list-style: none; /* 0.6.14 */
+        display: flex; 
+        list-style: none; 
         }
 
         .nav-links li a {
-        display: block; /* 0.6.4 */
-        padding: 10px 15px; /* 0.6.4 */
-        color: #fff; /* 0.6.4 */
-        text-decoration: none; /* 0.6.4 */
+        display: block;
+        padding: 10px 15px;
+        color: #fff; 
+        text-decoration: none; 
         font-size: 16px;
         transition: background 0.3s;
         }
@@ -76,9 +77,24 @@
         padding: 30px;
         }
 
-        .register {
+        /* .register {
         text-align: center;
         padding: 20px;
+        width: 300px;
+        height: 150px;
+        background-color: #fef2f5;
+        border: 2px solid #ccc;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        } */
+
+        .btn {
+            padding: 8px 16px;
+            background-color: white;
+            text-decoration: none;
+            border-radius: 4px;
         }
 
         footer {
@@ -115,27 +131,26 @@
         }
         }
 
+        
+
         </style>
         
     </head>
         <body>
 
         <nav class="topbar">
-        <!-- Brand Logo -->
         <img src="logo.png" alt="Brand Logo" class="piclogo">
         <a href="#" class="logo">GalleryCove</a>
 
-        <!-- Hidden checkbox to control mobile visibility -->
         <input type="checkbox" id="checkbox-toggle">
         
-        <!-- Hamburger icon tied to the checkbox -->
         <label for="checkbox-toggle" class="menu-toggle">
         <span></span>
         <span></span>
         <span></span>
         </label>
 
-        <!-- Navigation Menu Items -->
+        
         <ul class="nav-links">
         <li><a href="#">Home</a></li>
         <li><a href="#">About</a></li>
@@ -148,10 +163,10 @@
         <p>Explore artworks from featured creators. Discover new styles, techniques, and stories.</p> </br>
     </section>
 
-    <section class="register">
-        <a href="login.html">Login</a>
-        <a href="signup.html">Sign Up</a></br>
-    </section>
+    <div class="register">
+        <a href="login.html" class="btn" target="_self">Login</a></br></br>
+        <a href="signup.html" class="btn" target="_self">Sign Up</a>
+    </div>
 
     <br>
 

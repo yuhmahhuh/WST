@@ -1,17 +1,87 @@
 <html>
     <head>
+                <style>
+            body {
+                background-color: #fef2f5;
+                display: flex;
+                justify-self: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+            }
+            .loginform {
+                width: 320px;
+                padding: 24px;
+                background-color: #fef2f5;
+                border-radius: 8px; 
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 
+            }
+
+            .loginform h2 {
+            margin-bottom: 20px;
+            text-align: center;
+            }
+
+            .loginform label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 14px;
+            }
+
+            .loginform input {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 16px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
+
+            .loginform button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            }
+
+            .loginform button:hover {
+            background-color: #0056b3;
+            }
+
+        </style>
     </head>
     <body>
-        <h1>Sign Up</h1>
 
-        <form action="homepage.html">
+        <!-- <form action="homepage.html">
             <label for="uname">Name:</label>
             <input type="text" name="username"></br>
             <label for="pass">Password:</label>
             <input type="password" name="password"></br>
             <input type="submit" value="submit">
         </form>
-        <a href="landingpage.html">Go back</a></br>
+        <a href="landingpage.html">Go back</a></br> -->
+
+                <div class="loginform">
+
+        <h1>Sign Up</h1>
+
+        <form action="homepage.html">
+            <label for="uname">Name:</label>
+            <input type="text" name="username" required></br>
+            <label for="pass">Password:</label>
+            <input type="password" name="password" required></br>
+            <!-- <input type="submit" value="submit"> -->
+            <button type="submit">Sign Up</button>
+            </br></br>
+            <a href="landingpage.html" class="btn" target="_self">Go back</a></br>
+        </form>
+
+       </div>
+
     </body>
 </html>

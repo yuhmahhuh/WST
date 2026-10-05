@@ -1,87 +1,178 @@
+
 <html>
-    <head>
-                <style>
-            body {
-                background-color: #fef2f5;
-                display: flex;
-                justify-self: center;
-                align-items: center;
-                height: 100vh;
-                margin: 0;
-            }
-            .loginform {
-                width: 320px;
-                padding: 24px;
-                background-color: #fef2f5;
-                border-radius: 8px; 
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  <head>
+    <title>GalleryCove - Register</title>
 
-            }
+    <style>
+      * {
+        margin: 0;              
+        padding: 0;             
+        box-sizing: border-box; 
+        font-family: sans-serif;
+      }
 
-            .loginform h2 {
-            margin-bottom: 20px;
-            text-align: center;
-            }
+ 
+      body {
+        background-color: #fef2f5; 
+        min-height: 100vh;        
+        display: flex;            
+        flex-direction: column;  
+      }
 
-            .loginform label {
-            display: block;
-            margin-bottom: 6px;
-            font-size: 14px;
-            }
+      .form-page {
+        flex: 1;              
+        display: flex;
+        justify-content: center; 
+        align-items: center;    
+        padding: 20px;             
+      }
 
-            .loginform input {
-                width: 100%;
-                padding: 10px;
-                margin-bottom: 16px;
-                border: 1px solid #ccc;
-                border-radius: 4px;
-                box-sizing: border-box;
-            }
+      .formbox {
+        width: 360px;                           
+        padding: 28px;                              
+        background-color: #fff;                     
+        border-radius: 8px;                        
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);  
+        text-align: center;                        
+      }
 
-            .loginform button {
-            width: 100%;
-            padding: 10px;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            cursor: pointer;
-            }
+      .formbox .piclogo {
+        height: 40px;
+        margin-bottom: 10px;
+      }
 
-            .loginform button:hover {
-            background-color: #0056b3;
-            }
+      .formbox h1 {
+        margin-bottom: 6px;
+      }
 
-        </style>
-    </head>
-    <body>
+      .formbox p.subtitle {
+        color: #777;
+        font-size: 14px;
+        margin-bottom: 20px;
+      }
 
-        <!-- <form action="homepage.html">
-            <label for="uname">Name:</label>
-            <input type="text" name="username"></br>
-            <label for="pass">Password:</label>
-            <input type="password" name="password"></br>
-            <input type="submit" value="submit">
-        </form>
-        <a href="landingpage.html">Go back</a></br> -->
+      .formbox form {
+        text-align: left;
+      }
 
-                <div class="loginform">
+      .formbox label {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 14px;
+      }
 
-        <h1>Sign Up</h1>
+      .formbox input[type="text"],
+      .formbox input[type="email"],
+      .formbox input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 14px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      .checkbox-row {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 14px;
+        font-size: 13px;
+      }
+
+      .formbox button {
+        width: 100%;
+        padding: 10px;
+        background-color: #007BFF;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-bottom: 12px;
+      }
+
+      .formbox button:hover {
+        background-color: #0056b3;
+      }
+
+      .formbox .links {
+        text-align: center;
+        font-size: 14px;
+      }
+
+      .formbox .links a {
+        color: #007BFF;
+        text-decoration: none;
+      }
+
+      .formbox .links a:hover {
+        text-decoration: underline;
+      }
+
+      .guest-link {
+        display: block;
+        text-align: center;
+        margin-top: 10px;
+        font-size: 13px;
+        color: #999;
+      }
+
+      footer {
+        text-align: center;
+        color: #7a6060;
+        padding: 15px;
+        background-color: #fbe4e8;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <div class="form-page">
+      <div class="formbox">
+
+        <img src="logo.png" alt="Brand Logo" class="piclogo" />
+
+        <h1>Create Account</h1>
+        <p class="subtitle">Join GalleryCove and start sharing your art</p>
 
         <form action="homepage.html">
-            <label for="uname">Name:</label>
-            <input type="text" name="username" required></br>
-            <label for="pass">Password:</label>
-            <input type="password" name="password" required></br>
-            <!-- <input type="submit" value="submit"> -->
-            <button type="submit">Sign Up</button>
-            </br></br>
-            <a href="landingpage.html" class="btn" target="_self">Go back</a></br>
+
+          <label for="fullname">Full Name</label>
+          <input type="text" id="fullname" name="fullname" required />
+
+          <label for="uname">Username</label>
+          <input type="text" id="uname" name="username" required />
+
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+
+          <label for="pass">Password</label>
+          <input type="password" id="pass" name="password" required />
+
+        
+          <label for="confirm">Confirm Password</label>
+          <input type="password" id="confirm" name="confirm_password" required />
+
+          <div class="checkbox-row">
+            <input type="checkbox" id="terms" name="terms" required />
+            <label for="terms" style="margin:0;">I accept the Terms and Conditions</label>
+          </div>
+
+          <button type="submit">Register</button>
         </form>
 
-       </div>
+        <div class="links">
+          <p>Already have an account? <a href="login.html" target="_self">Login</a></p>
+        </div>
 
-    </body>
+        <a href="homepage.html" class="guest-link" target="_self">Continue as Guest</a>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2026 GalleryCove. All rights reserved.</p>
+    </footer>
+
+  </body>
 </html>

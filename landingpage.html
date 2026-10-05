@@ -1,186 +1,290 @@
-<html>  
-    <head>
-        <style>
-        * {
+<html>
+  <head>
+    <title>GalleryCove - Landing Page</title>
+
+    <style>
+      * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
         font-family: sans-serif;
-        }
+      }
 
-        body {
+      body {
         background-color: #fef2f5;
-        text-align: center  ;
-        }
+        color: #333;
+      }
 
-        .topbar {
-        display: flex; 
-        justify-content: space-between; 
-        align-items: center; 
-        background-color: #da9494; 
-        padding: 10px 20px;
+      .tab-radio {
+        display: none;
+      }
+
+      .tab-section {
+        display: none;
+      }
+
+      #tab-about:checked ~ #about-tab {
+        display: block;
+      }
+      #tab-gallery:checked ~ #gallery-tab {
+        display: block;
+      }
+
+      #tab-about:checked ~ nav label[for="tab-about"],
+      #tab-gallery:checked ~ nav label[for="tab-gallery"] {
+        background-color: rgba(255, 255, 255, 0.35);
+        font-weight: bold;
+      }
+
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #da9494;
+        padding: 16px 40px;
         color: #fff;
-        position: sticky; 
+        position: sticky;
         top: 0;
         z-index: 1000;
-        }
+      }
 
-        .logo {
-        font-size: 24px;
+      .logo-group {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .piclogo {
+        height: 40px;
+        width: auto;
+      }
+
+      .logo {
+        font-size: 22px;
         font-weight: bold;
-        text-decoration: none;
         color: #fff;
-        }
-        .piclogo {
-        height: 40px; 
-        weight: auto;
-        }
+        text-decoration: none;
+      }
 
-        .nav-links {
-        display: flex; 
-        list-style: none; 
-        }
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 5px;
+        align-items: center;
+      }
 
-        .nav-links li a {
+      .nav-links a,
+      .nav-links label {
         display: block;
         padding: 10px 15px;
-        color: #fff; 
-        text-decoration: none; 
-        font-size: 16px;
-        transition: background 0.3s;
-        }
-
-        .nav-links li a:hover {
-        background-color: #555;
+        color: #fff;
+        text-decoration: none;
+        font-size: 15px;
         border-radius: 4px;
-        }
-
-        .menu-toggle {
-        display: none;
         cursor: pointer;
-        flex-direction: column;
-        gap: 5px;
-        }
+        transition: background 0.2s;
+      }
 
-        .menu-toggle span {
+      .nav-links a:hover,
+      .nav-links label:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+
+      .hero {
+        text-align: center;
+        padding: 60px 20px;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+        margin-bottom: 12px;
+      }
+
+      .hero p {
+        max-width: 500px;
+        margin: 0 auto 20px auto;
+        color: #555;
+      }
+
+      .hero img {
+        width: 260px;
+        height: 260px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin: 20px 0;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 10px 22px;
+        background-color: #007BFF;
+        color: #fff;
+        text-decoration: none;
+        border: none;
+        border-radius: 4px;
+        font-size: 15px;
+        cursor: pointer;
+      }
+
+      .btn:hover {
+        background-color: #0056b3;
+      }
+
+      .section {
+        padding: 40px 20px;
+        text-align: center;
+      }
+
+      .section h2 {
+        margin-bottom: 20px;
+      }
+
+      .card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .card {
         background-color: #fff;
-        height: 3px;
-        width: 25px;
-        border-radius: 2px;
-        }
+        border-radius: 8px;
+        padding: 16px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      }
 
-            #checkbox-toggle {
-        display: none;
-        }
+      .card img {
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+        border-radius: 4px;
+        margin-bottom: 10px;
+      }
 
-        .abt {
-        padding: 30px;
-        }
-
-        /* .register {
+      .cta {
+        background-color: #da9494;
+        color: #fff;
+        padding: 40px 20px;
         text-align: center;
+      }
+
+      .cta .btn {
+        background-color: #fff;
+        color: #da9494;
+      }
+
+      .cta .btn:hover {
+        background-color: #f2e2e2;
+      }
+
+      footer {
+        text-align: center;
+        color: #7a6060;
         padding: 20px;
-        width: 300px;
-        height: 150px;
-        background-color: #fef2f5;
-        border: 2px solid #ccc;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        } */
+        background-color: #fbe4e8;
+      }
 
-        .btn {
-            padding: 8px 16px;
-            background-color: white;
-            text-decoration: none;
-            border-radius: 4px;
-        }
+      footer a {
+        color: #7a6060;
+        margin: 0 6px;
+        text-decoration: none;
+      }
+    </style>
+  </head>
 
-        .pic{
-            width: 50px;
-            height: 50px;
-        }
+  <body>
 
-        footer {
-        text-align: center;
-        color: rgb(183, 152, 152);
-        padding: 15px;
-        }
+    <input type="radio" name="landing-tabs" id="tab-about" class="tab-radio" checked>
+    <input type="radio" name="landing-tabs" id="tab-gallery" class="tab-radio">
 
-        @media (max-width: 768px) {
-        .menu-toggle {
-            display: flex;
-        }
-
-        .nav-links {
-            display: none; 
-            flex-direction: column;
-            width: 100%;
-            position: absolute;
-            top: 100%; 
-            left: 0;
-            background-color: #333;
-            padding: 10px 0;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .nav-links li {
-            text-align: center;
-        }
-
-                .nav-links li a {
-            padding: 15px;
-        }
-
-        #checkbox-toggle:checked ~ .nav-links {
-            display: flex;
-        }
-        }
-
-        
-
-        </style>
-        
-    </head>
-        <body>
-
-        <nav class="topbar">
-        <img src="logo.png" alt="Brand Logo" class="piclogo">
+    <nav class="topbar">
+      <div class="logo-group">
+        <img src="logo.png" alt="Brand Logo" class="piclogo" />
         <a href="#" class="logo">GalleryCove</a>
+      </div>
 
-        <input type="checkbox" id="checkbox-toggle">
-        
-        <label for="checkbox-toggle" class="menu-toggle">
-        <span></span>
-        <span></span>
-        <span></span>
-        </label>
-
-        
-        <ul class="nav-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Contact</a></li>
-        </ul>
+      <ul class="nav-links">
+        <li><label for="tab-about">About</label></li>
+        <li><label for="tab-gallery">Gallery</label></li>
+        <li><a href="login.html" target="_self">Login</a></li>
+        <li><a href="signup.html" target="_self">Register</a></li>
+      </ul>
     </nav>
-        
-    <section class="abt">
 
-        <p>Explore artworks from featured creators. Discover new styles, techniques, and stories.</p> </br>
+    <section id="about-tab" class="tab-section">
+
+      <div class="hero">
+        <h1>Welcome to GalleryCove</h1>
+        <img src="https://placehold.co/260x260?text=Featured+Artwork" alt="Featured artwork" />
+        <p>A cozy corner of the internet where independent artists share their work and art lovers discover something new.</p>
+        <a href="signup.html" class="btn" target="_self">Get Started</a>
+      </div>
+
+      <div class="section">
+        <h2>About the Website</h2>
+        <p style="max-width:600px; margin:0 auto;">
+          GalleryCove is a simple online gallery built for artists to showcase
+          their work and for visitors to browse, favorite, and follow the
+          creators they love. No clutter, just art.
+        </p>
+      </div>
+
+      <div class="cta">
+        <h2>Ready to explore?</h2>
+        <p>Create a free account and start building your own collection today.</p>
+        <br />
+        <a href="signup.html" class="btn" target="_self">Join GalleryCove</a>
+      </div>
     </section>
 
-    <div class="register">
-        <a href="login.html" class="btn" target="_self">Login</a></br></br>
-        <p>Don't have an account?</p></br>
-        <a href="signup.html" class="btn" target="_self">Sign Up</a>
-    </div>
+    <section id="gallery-tab" class="tab-section">
 
-    <br>
+      <div class="section">
+        <h2>Featured Artists</h2>
+        <div class="card-grid">
+          <div class="card">
+            <img src="https://placehold.co/200x140?text=Artist+1" alt="Artist" />
+            <p>Maya Santos</p>
+          </div>
+          <div class="card">
+            <img src="https://placehold.co/200x140?text=Artist+2" alt="Artist" />
+            <p>Leo Cruz</p>
+          </div>
+          <div class="card">
+            <img src="https://placehold.co/200x140?text=Artist+3" alt="Artist" />
+            <p>Ana Reyes</p>
+          </div>
+        </div>
+      </div>
 
-        <footer>
-        <p>&copy; 2026 GalleryCove. All rights reserved.</p>
-        </footer>
-    </body>
+      <div class="section">
+        <h2>Popular Artworks</h2>
+        <div class="card-grid">
+          <div class="card">
+            <img src="https://placehold.co/200x140?text=Artwork+1" alt="Artwork" />
+            <p>Quiet Morning</p>
+          </div>
+          <div class="card">
+            <img src="https://placehold.co/200x140?text=Artwork+2" alt="Artwork" />
+            <p>City Lights</p>
+          </div>
+          <div class="card">
+            <img src="https://placehold.co/200x140?text=Artwork+3" alt="Artwork" />
+            <p>Ocean Dream</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>Contact us: hello@gallerycove.com</p>
+      <p>
+        <a href="#">Instagram</a> | <a href="#">Twitter</a> | <a href="#">Facebook</a>
+      </p>
+      <p>&copy; 2026 GalleryCove. All rights reserved.</p>
+    </footer>
+
+  </body>
 </html>

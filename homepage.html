@@ -1,170 +1,349 @@
-<html>  
-    <head>
-                <style>
-        * {
+<html>
+  <head>
+    <title>GalleryCove - Home</title>
+
+    <style>
+      * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
         font-family: sans-serif;
-        }
+      }
 
-        body {
+      body {
         background-color: #fef2f5;
-        text-align: center  ;
-        }
+      }
 
-        .topbar {
-        display: flex; 
-        justify-content: space-between; 
-        align-items: center; 
-        background-color: #da9494; 
-        padding: 10px 20px;
+      .tab-radio {
+        display: none;
+      }
+
+      .tab-section {
+        display: none;
+      }
+
+      #nav-home:checked ~ .home-layout #dashboard-tab,
+      #nav-settings:checked ~ .home-layout #settings-tab,
+      #nav-gallery:checked ~ #sub-overview:checked ~ .home-layout #gallery-tab,
+      #nav-gallery:checked ~ #sub-categories:checked ~ .home-layout #categories-tab,
+      #nav-gallery:checked ~ #sub-favorites:checked ~ .home-layout #favorites-tab,
+      #nav-gallery:checked ~ #sub-upload:checked ~ .home-layout #upload-tab {
+        display: block;
+      }
+
+      #nav-home:checked ~ .home-header label[for="nav-home"],
+      #nav-gallery:checked ~ .home-header label[for="nav-gallery"],
+      #nav-settings:checked ~ .home-header label[for="nav-settings"] {
+        background-color: rgba(255, 255, 255, 0.35);
+        font-weight: bold;
+      }
+
+      .sidebar {
+        display: none;
+      }
+
+      #nav-gallery:checked ~ .home-layout .sidebar {
+        display: block;
+      }
+
+      #sub-categories:checked ~ .home-layout .sidebar label[for="sub-categories"],
+      #sub-favorites:checked ~ .home-layout .sidebar label[for="sub-favorites"],
+      #sub-upload:checked ~ .home-layout .sidebar label[for="sub-upload"] {
+        background-color: #da9494;
         color: #fff;
-        position: sticky; 
+        font-weight: bold;
+      }
+
+      .home-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #da9494;
+        color: #fff;
+        padding: 12px 24px;
+        position: sticky;
         top: 0;
         z-index: 1000;
-        }
+        gap: 16px;
+      }
 
-        .logo {
-        font-size: 24px;
-        font-weight: bold;
-        text-decoration: none;
-        color: #fff;
-        }
-        .piclogo {
-        height: 40px; 
-        weight: auto;
-        }
-
-        .nav-links {
-        display: flex; 
-        list-style: none; 
-        }
-
-        .nav-links li a {
-        display: block;
-        padding: 10px 15px;
-        color: #fff; 
-        text-decoration: none; 
-        font-size: 16px;
-        transition: background 0.3s;
-        }
-
-        .nav-links li a:hover {
-        background-color: #555;
-        border-radius: 4px;
-        }
-
-        .menu-toggle {
-        display: none;
-        cursor: pointer;
-        flex-direction: column;
-        gap: 5px;
-        }
-
-        .menu-toggle span {
-        background-color: #fff;
-        height: 3px;
-        width: 25px;
-        border-radius: 2px;
-        }
-
-            #checkbox-toggle {
-        display: none;
-        }
-
-        .abt {
-        padding: 30px;
-        }
-
-        /* .register {
-        text-align: center;
-        padding: 20px;
-        width: 300px;
-        height: 150px;
-        background-color: #fef2f5;
-        border: 2px solid #ccc;
+      .logo-group {
         display: flex;
-        flex-direction: column;
-        justify-content: center;
         align-items: center;
-        } */
+        gap: 10px;
+      }
 
-        .btn {
-            padding: 8px 16px;
-            background-color: white;
-            text-decoration: none;
-            border-radius: 4px;
-        }
+      .piclogo {
+        height: 36px;
+        width: auto;
+      }
 
-        .pic{
-            width: 50px;
-            height: 50px;
-        }
+      .logo {
+        font-size: 20px;
+        font-weight: bold;
+        color: #fff;
+        text-decoration: none;
+      }
 
-        footer {
+      .header-nav {
+        display: flex;
+        list-style: none;
+        gap: 5px;
+      }
+
+      .header-nav label {
+        display: block;
+        padding: 8px 14px;
+        color: #fff;
+        font-size: 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+
+      .header-nav label:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+
+      .search-bar {
+        flex: 1;
+        max-width: 320px;
+        padding: 8px 12px;
+        border-radius: 4px;
+        border: none;
+      }
+
+      .header-icons {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .header-icons button,
+      .header-icons a,
+      .header-icons label {
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 15px;
+        cursor: pointer;
+        text-decoration: none;
+      }
+
+      .home-layout {
+        display: flex;
+        min-height: calc(100vh - 60px);
+      }
+
+      .sidebar {
+        width: 200px;
+        background-color: #fff5f7;
+        padding: 20px 0;
+        border-right: 1px solid #f0d9de;
+      }
+
+      .sidebar label {
+        display: block;
+        width: 100%;
+        text-align: left;
+        padding: 12px 24px;
+        font-size: 15px;
+        cursor: pointer;
+        color: #333;
+      }
+
+      .sidebar label:hover {
+        background-color: #fbe4e8;
+      }
+
+      .main-content {
+        flex: 1;
+        padding: 30px;
+      }
+
+      .main-content h2 {
+        margin-bottom: 16px;
+      }
+
+      .main-content h3 {
+        margin-bottom: 10px;
+      }
+
+      .main-content .section-block {
+        margin-bottom: 30px;
+      }
+
+      .card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 16px;
+      }
+
+      .card {
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 14px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      }
+
+      .card img {
+        width: 100%;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 4px;
+        margin-bottom: 8px;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007BFF;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        font-size: 15px;
+        cursor: pointer;
+        text-decoration: none;
+      }
+
+      .btn:hover {
+        background-color: #0056b3;
+      }
+
+      footer {
         text-align: center;
-        color: rgb(183, 152, 152);
+        color: #7a6060;
         padding: 15px;
-        }
+        background-color: #fbe4e8;
+      }
+    </style>
+  </head>
 
-        @media (max-width: 768px) {
-        .menu-toggle {
-            display: flex;
-        }
+  <body>
 
-        .nav-links {
-            display: none; 
-            flex-direction: column;
-            width: 100%;
-            position: absolute;
-            top: 100%; 
-            left: 0;
-            background-color: #333;
-            padding: 10px 0;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
+    <input type="radio" name="topnav" id="nav-home" class="tab-radio" checked>
+    <input type="radio" name="topnav" id="nav-gallery" class="tab-radio">
+    <input type="radio" name="topnav" id="nav-settings" class="tab-radio">
 
-        .nav-links li {
-            text-align: center;
-        }
+    <input type="radio" name="gallery-sub" id="sub-overview" class="tab-radio" checked>
+    <input type="radio" name="gallery-sub" id="sub-categories" class="tab-radio">
+    <input type="radio" name="gallery-sub" id="sub-favorites" class="tab-radio">
+    <input type="radio" name="gallery-sub" id="sub-upload" class="tab-radio">
 
-                .nav-links li a {
-            padding: 15px;
-        }
-
-        #checkbox-toggle:checked ~ .nav-links {
-            display: flex;
-        }
-        }
-
-        
-
-        </style>
-    </head>
-    <body>
-        <nav class="topbar">
-        <img src="logo.png" alt="Brand Logo" class="piclogo">
+    <header class="home-header">
+      <div class="logo-group">
+        <img src="logo.png" alt="Brand Logo" class="piclogo" />
         <a href="#" class="logo">GalleryCove</a>
+      </div>
 
-        <input type="checkbox" id="checkbox-toggle">
-        
-        <label for="checkbox-toggle" class="menu-toggle">
-        <span></span>
-        <span></span>
-        <span></span>
-        </label>
+      <ul class="header-nav">
+        <li><label for="nav-home">Home</label></li>
+        <li><label for="nav-gallery">Gallery</label></li>
+      </ul>
 
-        
-        <ul class="nav-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Contact</a></li>
-        </ul>
-    </nav>
-        <footer>
+      <input type="text" class="search-bar" placeholder="Search artworks, artists..." />
 
-        </footer>
-    </body>
+      <div class="header-icons">
+        <button type="button" title="Notifications">🔔</button>
+        <button type="button" title="Profile">👤 Profile</button>
+        <label for="nav-settings">Settings</label>
+        <a href="landingpage.html" target="_self">Logout</a>
+      </div>
+    </header>
+
+    <div class="home-layout">
+
+      <aside class="sidebar">
+        <label for="sub-categories">Categories</label>
+        <label for="sub-favorites">Favorites</label>
+        <label for="sub-upload">Upload Artwork</label>
+      </aside>
+
+      <main class="main-content">
+
+        <section id="dashboard-tab" class="tab-section">
+          <h2>Dashboard</h2>
+
+          <div class="section-block">
+            <h3>Featured Artworks</h3>
+            <div class="card-grid">
+              <div class="card"><img src="https://placehold.co/200x120?text=Artwork+A" /><p>Golden Hour</p></div>
+              <div class="card"><img src="https://placehold.co/200x120?text=Artwork+B" /><p>Still Life</p></div>
+              <div class="card"><img src="https://placehold.co/200x120?text=Artwork+C" /><p>Blue Mountains</p></div>
+            </div>
+          </div>
+
+          <div class="section-block">
+            <h3>Latest Uploads</h3>
+            <div class="card-grid">
+              <div class="card"><img src="https://placehold.co/200x120?text=New+1" /><p>Uploaded 2h ago</p></div>
+              <div class="card"><img src="https://placehold.co/200x120?text=New+2" /><p>Uploaded 5h ago</p></div>
+            </div>
+          </div>
+
+          <div class="section-block">
+            <h3>Trending Artists</h3>
+            <div class="card-grid">
+              <div class="card"><img src="https://placehold.co/200x120?text=Artist+A" /><p>Maya Santos</p></div>
+              <div class="card"><img src="https://placehold.co/200x120?text=Artist+B" /><p>Leo Cruz</p></div>
+            </div>
+          </div>
+
+          <div class="section-block">
+            <h3>Recommended Collections</h3>
+            <div class="card-grid">
+              <div class="card"><img src="https://placehold.co/200x120?text=Collection+1" /><p>Watercolor Wonders</p></div>
+              <div class="card"><img src="https://placehold.co/200x120?text=Collection+2" /><p>Urban Sketches</p></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="gallery-tab" class="tab-section">
+          <h2>Gallery</h2>
+          <div class="card-grid">
+            <div class="card"><img src="https://placehold.co/200x120?text=Gallery+1" /><p>Sunset Point</p></div>
+            <div class="card"><img src="https://placehold.co/200x120?text=Gallery+2" /><p>Forest Path</p></div>
+            <div class="card"><img src="https://placehold.co/200x120?text=Gallery+3" /><p>Portrait Study</p></div>
+          </div>
+        </section>
+
+        <section id="categories-tab" class="tab-section">
+          <h2>Categories</h2>
+          <div class="card-grid">
+            <div class="card"><p>Painting</p></div>
+            <div class="card"><p>Photography</p></div>
+            <div class="card"><p>Digital Art</p></div>
+            <div class="card"><p>Sculpture</p></div>
+          </div>
+        </section>
+
+        <section id="favorites-tab" class="tab-section">
+          <h2>Favorites</h2>
+          <p>You haven't favorited any artwork yet. Browse the Gallery to add some!</p>
+        </section>
+
+        <section id="upload-tab" class="tab-section">
+          <h2>Upload Artwork</h2>
+          <form>
+            <label for="art-title">Title</label><br />
+            <input type="text" id="art-title" name="title" style="padding:8px; width:280px; margin:8px 0;" /><br />
+            <label for="art-file">Image File</label><br />
+            <input type="file" id="art-file" name="file" style="margin:8px 0;" /><br />
+            <button type="button" class="btn">Upload</button>
+          </form>
+        </section>
+
+        <section id="settings-tab" class="tab-section">
+          <h2>Settings</h2>
+          <p>Account settings will appear here.</p>
+        </section>
+
+      </main>
+    </div>
+
+    <footer>
+      <p>&copy; 2026 GalleryCove. All rights reserved.</p>
+    </footer>
+
+  </body>
 </html>

@@ -50,6 +50,7 @@
         display: block;
       }
 
+      #sub-overview:checked ~ .home-layout .sidebar label[for="sub-overview"],
       #sub-categories:checked ~ .home-layout .sidebar label[for="sub-categories"],
       #sub-favorites:checked ~ .home-layout .sidebar label[for="sub-favorites"],
       #sub-upload:checked ~ .home-layout .sidebar label[for="sub-upload"] {
@@ -277,6 +278,7 @@
     <div class="home-layout">
 
       <aside class="sidebar">
+        <label for="sub-overview">Overview</label>
         <label for="sub-categories">Categories</label>
         <label for="sub-favorites">Favorites</label>
         <label for="sub-upload">Upload Artwork</label>

@@ -207,6 +207,40 @@
         margin-bottom: 8px;
       }
 
+      .art {
+        position: relative;
+        overflow: hidden;
+        border-radius: 4px;
+        margin-bottom: 20px;
+      }
+
+      .art img {
+        display: block;
+        margin-bottom: 0;
+        border-radius: 0;
+      }
+
+      .art .artist {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 36px 12px 10px;
+        color: #fff;
+        font-size: 15px;
+        font-weight: 600;
+        text-shadow: 0 1px 3px rgba(80, 30, 120, 0.5);
+        text-align: left;
+        background: linear-gradient(to top, rgba(138, 2, 184, 0.92), rgba(196, 150, 232, 0));
+        opacity: 0;
+        transition: opacity 0.25s;
+      }
+
+      .art:hover .artist {
+        opacity: 1;
+      }
+
+
       .btn {
         display: inline-block;
         padding: 10px 20px;
@@ -300,33 +334,76 @@
           <div class="section-block">
             <h3>Featured Artworks</h3>
             <div class="card-grid">
-              <div class="card"><img src="artwork1.jpg" /><p>Artwork 1</p></div>
-              <div class="card"><img src="artwork2.jpg" /><p>Artwork 2</p></div>
-              <div class="card"><img src="artwork3.jpg" /><p>Artwork 3</p></div>
+              <div class="card">
+                <div class="art">
+                <img src="artwork1.jpg" alt="Artist"/>
+                <span class="artist">@Artist 1</span></div>
+                <p>Artwork 1</p></div>
+              <div class="card">
+                <div class="art">
+                <img src="artwork2.jpg" alt="Artist"/>
+                <span class="artist">@Artist 2</span></div>
+                <p>Artwork 2</p></div>
+              <div class="card">
+                <div class="art">
+                <img src="artwork3.jpg" alt="Artist"/>
+                <span class="artist">@Artist 3</span></div>
+                <p>Artwork 3</p></div>
             </div>
           </div>
 
           <div class="section-block">
             <h3>Latest Uploads</h3>
             <div class="card-grid">
-              <div class="card"><img src="ex2.jpg" /><p>Uploaded 2h ago</p></div>
-              <div class="card"><img src="ex3.jpg" /><p>Uploaded 5h ago</p></div>
+              <div class="card">
+                <div class="art">
+                <img src="ex2.jpg" alt="Artist" />
+                <span class="artist">@Artist 1</span>
+                </div>
+                <p>Uploaded 2h ago</p>
+              </div>
+              <div class="card">
+                <div class="art">
+                <img src="ex3.jpg" alt="Artist" />
+                <span class="artist">@Artist 2</span>
+                </div>
+                <p>Uploaded 5h ago</p>
+              </div>
             </div>
           </div>
 
           <div class="section-block">
             <h3>Trending Artists</h3>
             <div class="card-grid">
-              <div class="card"><img src="artist1.jpg" /><p>@Artist 1</p></div>
-              <div class="card"><img src="artist2.jpg" /><p>@Artist 2</p></div>
+              <div class="card">
+                <div class="art">
+                <img src="artist1.jpg"  alt="Artist" />
+                <span class="artist">@Artist 1</span></div>
+                <p>Artist 1</p>
+              </div>
+              <div class="card">
+                <div class="art">
+                <img src="artist2.jpg" alt="Artist" />
+                <span class="artist">@Artist 2</span>
+                </div>
+                <p>Artist 2</p>
+              </div>
             </div>
           </div>
 
           <div class="section-block">
             <h3>Recommended Collections</h3>
             <div class="card-grid">
-              <div class="card"><img src="col1.jpeg" /><p>Collection 1</p></div>
-              <div class="card"><img src="col3.jpeg " /><p>Collection 2</p></div>
+              <div class="card">
+                <div class="art">
+                <img src="col1.jpeg" alt="Artist" />
+                <span class="artist">@Artist 1</span></div>
+                <p>Collection 1</p></div>
+              <div class="card">
+                <div class="art">
+                <img src="col3.jpeg" alt="Artist" />
+                <span class="artist">@Artist 2</span></div>
+                <p>Collection 2</p></div>
             </div>
           </div>
         </section>
@@ -334,9 +411,21 @@
         <section id="gallery-tab" class="tab-section">
           <h2>Gallery</h2>
           <div class="card-grid">
-            <div class="card"><img src="artwork1.jpg" /><p>Artwork 1</p></div>
-            <div class="card"><img src="artwork2.jpg" /><p>Artwork 2</p></div>
-            <div class="card"><img src="artwork3.jpg" /><p>Artwork 3</p></div>
+            <div class="card">
+              <div class="art">
+              <img src="artwork1.jpg" alt="Artist" />
+              <span class="artist">@Artist 1</span></div>
+              <p>Artwork 1</p></div>
+            <div class="card">
+              <div class="art">
+              <img src="artwork2.jpg" alt="Artist" />
+              <span class="artist">@Artist 2</span></div>
+              <p>Artwork 2</p></div>
+            <div class="card">
+              <div class="art">
+              <img src="artwork3.jpg" alt="Artist" />
+              <span class="artist">@Artist 3</span></div>
+              <p>Artwork 3</p></div>
           </div>
         </section>
 

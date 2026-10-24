@@ -24,34 +24,23 @@
         min-height: 100vh;
       }
 
-      .tab-radio {
-        display: none;
+
+      html{
+        scroll-behavior: smooth;
       }
 
-      .tab-section {
-        display: none;
-        flex: 1;
-      }
+      #about, #gallery {
+        scroll-margin-top: 90px;
+        }
 
-      #tab-about:checked ~ #about-tab {
-        display: flex;
-        flex-direction: column;
-      }
-      #tab-gallery:checked ~ #gallery-tab {
-        display: block;
-      }
-
-      #tab-about:checked ~ nav label[for="tab-about"],
-      #tab-gallery:checked ~ nav label[for="tab-gallery"] {
-        background-color: rgba(255, 255, 255, 0.35);
-        font-weight: bold;
-      }
 
       .topbar {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background-color: #3d0568;
+        background-color: rgba(72, 15, 103, 0.784); 
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.4);
         padding: 16px 40px;
         color: #fff;
         position: sticky;
@@ -117,13 +106,55 @@
         color: #ffffff;
       }
 
-      .hero img {
+      .art,
+      .abtimg {
+        position: relative;
+        overflow: hidden;
+        border-radius: 4px;
+        margin-bottom: 20px;
+      }
+
+      .art img,
+      .abtimg img {
+        display: block;
+        margin-bottom: 0;
+        border-radius: 0;
+      }
+
+      .art .artist,
+      .abtimg .artist {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 36px 12px 10px;
+        color: #fff;
+        font-size: 15px;
+        font-weight: 600;
+        text-shadow: 0 1px 3px rgba(80, 30, 120, 0.5);
+        text-align: left;
+        background: linear-gradient(to top, rgba(138, 2, 184, 0.92), rgba(196, 150, 232, 0));
+        opacity: 0;
+        transition: opacity 0.25s;
+      }
+
+      .art:hover .artist,
+      .abtimg:hover .artist {
+        opacity: 1;
+      }
+
+      .abtimg {
+        display: inline-block;
+        margin: 20px 0;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      }
+
+      .abtimg img {
         width: 650px;
+        max-width: 100%;
         height: 460px;
         object-fit: cover;
-        border-radius: 8px;
-        margin: 20px 0;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
       }
 
       .btn {
@@ -155,12 +186,14 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 20px;
-        max-width: 900px;
+        max-width: 1000px;
         margin: 0 auto;
       }
 
       .card {
-        background-color: #6a2475;
+        background-color: rgba(185, 28, 164, 0.45); 
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.6);
         border-radius: 8px;
         padding: 16px;
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
@@ -174,14 +207,13 @@
 
       .card img {
         width: 100%;
-        height: 140px;
+        height: 170px;
         object-fit: cover;
         border-radius: 4px;
-        margin-bottom: 10px;
+        margin-bottom: 0;
       }
 
       .cta {
-        margin-top: auto;
         background-color: #3d0568;
         color: #fff;
         padding: 40px 20px;
@@ -206,6 +238,7 @@
         background-color: #dbb8e2;
       }
 
+
       footer {
         margin-top: auto;
         text-align: center;
@@ -224,9 +257,6 @@
 
   <body>
 
-    <input type="radio" name="landing-tabs" id="tab-about" class="tab-radio" checked>
-    <input type="radio" name="landing-tabs" id="tab-gallery" class="tab-radio">
-
     <nav class="topbar">
       <div class="logo-group">
         <img src="2.png" alt="Brand Logo" class="piclogo" />
@@ -234,18 +264,20 @@
       </div>
 
       <ul class="nav-links">
-        <li><label for="tab-about">About</label></li>
-        <li><label for="tab-gallery">Gallery</label></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#gallery">Gallery</a></li>
         <li><a href="login.html" target="_self">Login</a></li>
         <li><a href="signup.html" target="_self">Register</a></li>
       </ul>
     </nav>
 
-    <section id="about-tab" class="tab-section">
+    <section id="about">
 
       <div class="hero">
         <h1>Welcome to GalleryCove!</h1>
+        <div class="abtimg">
         <img src="ex1.jpg" alt="Featured artwork" />
+        <span class="artist">@Artist 1</span></div>
         <p>A cozy corner of the internet where independent artists share their work and art lovers discover something new.</p>
         <a href="signup.html" class="btn" target="_self">Get Started</a>
       </div>
@@ -256,7 +288,7 @@
           GalleryCove is a simple online gallery built for artists to showcase
           their work and for visitors to browse, favorite, and follow the
           creators they love. 
-          </p></br>
+          </p><br />
         <p style="max-width:600px; margin:0 auto;">
           This gives opportunity to new and upcoming artists to be known and start off their career.
         </p>
@@ -267,24 +299,27 @@
         <p>Create a free account and start building your own collection today.</p>
         <a href="signup.html" class="btn" target="_self">Join GalleryCove</a>
       </div>
-    </section>
 
-    <section id="gallery-tab" class="tab-section">
-
-      <div class="section">
+      <div class="section" id="gallery">
         <h2>Featured Artists</h2>
         <div class="card-grid">
           <div class="card">
+            <div class="art">
             <img src="artist1.jpg" alt="Artist" />
-            <p>@Artist 1</p>
+            <span class="artist">@Artist 1</span></div>
+            <p>Artwork 1</p>
           </div>
           <div class="card">
+            <div class="art">
             <img src="artist2.jpg" alt="Artist" />
-            <p>@Artist 2</p>
+            <span class="artist">@Artist 2</span></div>
+            <p>Artwork 2</p>
           </div>
           <div class="card">
+            <div class="art">
             <img src="artist3.jpg" alt="Artist" />
-            <p>@Artist 3</p>
+            <span class="artist">@Artist 3</span></div>
+            <p>Artwork 3</p>
           </div>
         </div>
       </div>
@@ -293,15 +328,21 @@
         <h2>Popular Artworks</h2>
         <div class="card-grid">
           <div class="card">
+            <div class="art">
             <img src="artwork1.jpg" alt="Artwork" />
+            <span class="artist">@Artist 1</span></div>
             <p>Artwork 1</p>
           </div>
           <div class="card">
+            <div class="art">
             <img src="artwork2.jpg" alt="Artwork" />
+            <span class="artist">@Artist 1</span></div>
             <p>Artwork 2</p>
           </div>
           <div class="card">
+            <div class="art">
             <img src="artwork3.jpg" alt="Artwork" />
+            <span class="artist">@Artist 1</span></div>
             <p>Artwork 3</p>
           </div>
         </div>

@@ -29,6 +29,7 @@
 
       #nav-home:checked ~ .home-layout #dashboard-tab,
       #nav-settings:checked ~ .home-layout #settings-tab,
+      #nav-profile:checked ~ .home-layout #profile-tab,
       #nav-gallery:checked ~ #sub-overview:checked ~ .home-layout #gallery-tab,
       #nav-gallery:checked ~ #sub-categories:checked ~ .home-layout #categories-tab,
       #nav-gallery:checked ~ #sub-favorites:checked ~ .home-layout #favorites-tab,
@@ -38,7 +39,8 @@
 
       #nav-home:checked ~ .home-header label[for="nav-home"],
       #nav-gallery:checked ~ .home-header label[for="nav-gallery"],
-      #nav-settings:checked ~ .home-header label[for="nav-settings"] {
+      #nav-settings:checked ~ .home-header label[for="nav-settings"],
+      #nav-profile:checked ~ .home-header label[for="nav-profile"] {
         background-color: rgba(255, 255, 255, 0.35);
         font-weight: bold;
       }
@@ -245,6 +247,57 @@
         opacity: 1;
       }
 
+      .profile-header {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 24px;
+        background-color: rgba(161, 28, 185, 0.295);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        border-radius: 8px;
+        padding: 24px;
+        margin-bottom: 30px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .profile-avatar {
+        width: 110px;
+        height: 110px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #fff;
+      }
+
+      .profile-info h2 {
+        font-size: 28px;
+        margin-bottom: 2px;
+      }
+
+      .profile-username {
+        color: #f1d3fb;
+        margin-bottom: 8px;
+      }
+
+      .profile-bio {
+        max-width: 420px;
+        margin-bottom: 12px;
+      }
+
+      .profile-stats {
+        display: flex;
+        gap: 24px;
+        margin-bottom: 14px;
+      }
+
+      .profile-stats div {
+        text-align: center;
+      }
+
+      .profile-stats strong {
+        display: block;
+        font-size: 20px;
+      }
 
       .btn {
         display: inline-block;
@@ -262,6 +315,87 @@
         background-color: #50036c;
       }
       
+      .glass-panel {
+        background-color: rgba(161, 28, 185, 0.295);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        border-radius: 8px;
+        padding: 24px;
+        margin-bottom: 24px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .glass-panel h3 {
+        margin-bottom: 12px;
+      }
+
+      .glass-panel input[type="text"] {
+        width: 100%;
+        max-width: 420px;
+        padding: 10px;
+        margin-bottom: 14px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        color: #333;
+        font-size: 15px;
+        text-shadow: none;
+      }
+
+      .glass-panel .btn {
+        margin-right: 8px;
+      }
+
+      .delete-form {
+        display: none;
+      }
+
+      #delete-toggle:checked ~ .delete-form {
+        display: block;
+      }
+
+      #delete-toggle:checked ~ label[for="delete-toggle"] {
+        display: none;
+      }
+
+      .setting-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-bottom: 14px;
+      }
+
+      .setting-label {
+        font-size: 14px;
+        color: #f1d3fb;
+      }
+
+      .setting-value {
+        font-size: 17px;
+        font-weight: bold;
+      }
+
+      .btn-secondary {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+
+      .btn-secondary:hover {
+        background-color: rgba(255, 255, 255, 0.35);
+      }
+
+      .btn-danger {
+        background-color: #b3123b;
+      }
+
+      .btn-danger:hover {
+        background-color: #8a0e2d;
+      }
+
+      .danger-panel {
+        border-color: rgba(255, 130, 150, 0.8);
+      }
+
       h3 {
         color: #fff;
       }
@@ -295,6 +429,7 @@
     <input type="radio" name="topnav" id="nav-home" class="tab-radio" checked>
     <input type="radio" name="topnav" id="nav-gallery" class="tab-radio">
     <input type="radio" name="topnav" id="nav-settings" class="tab-radio">
+    <input type="radio" name="topnav" id="nav-profile" class="tab-radio">
 
     <input type="radio" name="gallery-sub" id="sub-overview" class="tab-radio" checked>
     <input type="radio" name="gallery-sub" id="sub-categories" class="tab-radio">
@@ -316,8 +451,8 @@
 
       <div class="header-icons">
         <button type="button" title="Notifications">🔔</button>
-        <!-- <button type="button" title="Profile">👤 Profile</button> -->
-        <label for="nav-settings">Settings</label>
+        <label for="nav-profile">👤 Profile</label>
+        <label for="nav-settings">⚙️Settings</label>
         <a href="landingpage.html" target="_self">Logout</a>
       </div>
     </header>
@@ -460,9 +595,75 @@
           </form>
         </section>
 
+        <section id="profile-tab" class="tab-section">
+          <div class="profile-header">
+            <img class="profile-avatar" src="artwork1.jpg" alt="Profile picture" />
+            <div class="profile-info">
+              <h2>Your Name</h2>
+              <p class="profile-username">@username</p>
+              <p class="profile-bio">Bio</p>
+              <div class="profile-stats">
+                <div><strong>3</strong>Artworks</div>
+                <div><strong>143</strong>Followers</div>
+                <div><strong>67</strong>Following</div>
+              </div>
+              <button type="button" class="btn">Edit Profile</button>
+            </div>
+          </div>
+
+          <h3>My Artworks</h3>
+          <div class="card-grid">
+            <div class="card">
+              <div class="art">
+              <img src="artist1.jpg" alt="artwork 1" />
+              <span class="artist">@username</span></div>
+              <p>Artwork 1</p></div>
+            <div class="card">
+              <div class="art">
+              <img src="artist2.jpg" alt="artwork 2" />
+              <span class="artist">@username</span></div>
+              <p>Artwork 2</p></div>
+            <div class="card">
+              <div class="art">
+              <img src="artist3.jpg" alt="artwork 3" />
+              <span class="artist">@username</span></div>
+              <p>Artwork 3</p></div>
+            <div class="card">
+              <div class="art">
+              <img src="artwork3.jpg" alt="artwork 4" />
+              <span class="artist">@username</span></div>
+              <p>Artwork 4</p></div>
+          </div>
+        </section>
+
         <section id="settings-tab" class="tab-section">
           <h2>Settings</h2>
-          <p>Account settings will appear here.</p>
+
+          <div class="glass-panel">
+            <h3>Account</h3>
+            <div class="setting-row">
+              <div>
+                <p class="setting-label">Email</p>
+                <p class="setting-value">example@gmail.com</p>
+              </div>
+              <button type="button" class="btn">Edit</button>
+            </div>
+          </div>
+
+          <div class="glass-panel danger-panel">
+            <h3>Delete Account</h3>
+            <p style="margin-bottom:14px;">Permanently delete your account and all your artworks. This can't be undone.</p>
+            <input type="checkbox" id="delete-toggle" class="tab-radio">
+            <label for="delete-toggle" class="btn btn-danger">Delete Account</label>
+            <form class="delete-form" action="landingpage.html">
+              <p style="margin-bottom:10px;">Type <strong>DELETE</strong> to confirm.</p>
+              <input type="text" pattern="DELETE" required placeholder="Type DELETE" />
+              <div>
+                <button type="submit" class="btn btn-danger">Yes, delete my account</button>
+                <label for="delete-toggle" class="btn btn-secondary">Cancel</label>
+              </div>
+            </form>
+          </div>
         </section>
 
       </main>

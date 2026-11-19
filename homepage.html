@@ -345,18 +345,6 @@
         margin-right: 8px;
       }
 
-      .delete-form {
-        display: none;
-      }
-
-      #delete-toggle:checked ~ .delete-form {
-        display: block;
-      }
-
-      #delete-toggle:checked ~ label[for="delete-toggle"] {
-        display: none;
-      }
-
       .setting-row {
         display: flex;
         justify-content: space-between;
@@ -655,13 +643,6 @@
             <p style="margin-bottom:14px;">Permanently delete your account and all your artworks. This can't be undone.</p>
             <input type="checkbox" id="delete-toggle" class="tab-radio">
             <label for="delete-toggle" class="btn btn-danger">Delete Account</label>
-            <form class="delete-form" action="landingpage.html">
-              <p style="margin-bottom:10px;">Type <strong>DELETE</strong> to confirm.</p>
-              <input type="text" pattern="DELETE" required placeholder="Type DELETE" />
-              <div>
-                <button type="submit" class="btn btn-danger">Yes, delete my account</button>
-                <label for="delete-toggle" class="btn btn-secondary">Cancel</label>
-              </div>
             </form>
           </div>
         </section>
